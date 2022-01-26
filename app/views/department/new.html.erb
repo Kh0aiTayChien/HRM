@@ -1,0 +1,17 @@
+<h1>Thêm phòng ban</h1>
+
+<%= form_tag :action => 'create' do %>
+
+  <div>
+    <label for="1">Tên</label>:
+    <%= text_field 'departments', 'name' %>
+  </div>
+  <div>
+    <label for="2">Mô tả</label>:
+    <%= text_field 'departments', 'description' %>
+  </div>
+
+  <%= submit_tag "Lưu" %>
+
+<% end -%>
+<%= link_to 'Quay lại', { :action => 'list' } %>

@@ -1,0 +1,12 @@
+<h1>Cập nhật phòng ban</h1>
+
+<%= form_for @dpm, :url =>{:action => "update", :id =>@dpm} do |f| %>
+
+  <p>Tên: <%= f.text_field 'name' %></p>
+  <p>Mô tả: <br/>
+
+    <%= f.text_area 'description' %></p>
+  <%= f.submit "Lưu thay đổi" %>
+<% end %>
+
+<%= link_to 'Quay lại', {:action => 'list' } %>

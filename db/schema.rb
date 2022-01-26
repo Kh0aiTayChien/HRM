@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2022_01_26_082535) do
 
-  create_table "departments", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
+  create_table "departments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", limit: 20
     t.text "description", size: :tiny
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "employee_files", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
+  create_table "employee_files", charset: "utf8mb4", force: :cascade do |t|
     t.string "position", limit: 20
     t.string "time_onboard", limit: 30
     t.datetime "created_at", precision: 6, null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_082535) do
     t.index ["employee_id"], name: "index_employee_files_on_employee_id"
   end
 
-  create_table "employee_projects", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
+  create_table "employee_projects", charset: "utf8mb4", force: :cascade do |t|
     t.string "time_assign", limit: 30
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,22 +38,25 @@ ActiveRecord::Schema.define(version: 2022_01_26_082535) do
     t.index ["project_id"], name: "index_employee_projects_on_project_id"
   end
 
-  create_table "employees", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
+  create_table "employees", charset: "utf8mb4", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "name", limit: 20
     t.integer "age", limit: 3
     t.string "birthday", limit: 20
     t.string "address", limit: 50
-    t.string "email", limit: 50
-    t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
     t.integer "rank_id"
     t.integer "department_id"
     t.index ["department_id"], name: "index_employees_on_department_id"
+    t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["rank_id"], name: "index_employees_on_rank_id"
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
-  create_table "projects", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
+  create_table "projects", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", limit: 20
     t.text "description", size: :tiny
     t.datetime "created_at", precision: 6, null: false
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_082535) do
     t.index ["department_id"], name: "index_projects_on_department_id"
   end
 
-  create_table "ranks", charset: "utf8mb3", collation: "utf8_unicode_ci", force: :cascade do |t|
+  create_table "ranks", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", limit: 20
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
