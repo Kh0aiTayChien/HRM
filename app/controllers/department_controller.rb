@@ -17,7 +17,7 @@ class DepartmentController < ApplicationController
       if @dpm.save
         format.html { redirect_to dpms_list_url, notice: "Thêm phòng ban thành công." }
       else
-        render :action => 'new'
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -40,7 +40,7 @@ class DepartmentController < ApplicationController
       if @dpm.update(dpm_param)
         format.html { redirect_to dpms_list_url, notice: "Cập nhật phòng ban thành công." }
       else
-        render :action => 'edit'
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
