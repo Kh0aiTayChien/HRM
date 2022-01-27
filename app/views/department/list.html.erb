@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 <% if @dpms.blank? %>
   <p>Hiện tại không có phòng ban nào hoạt động.</p>
 <% else %>
-  <p style="color: green">Hiện tại đang có <%= @dpms.length %> phòng ban hoạt động:</p>
+  <p style="color: blue">Hiện tại đang có <%= @dpms.length %> phòng ban hoạt động:</p>
 <table class="table table-striped">
   <tr>
     <th>STT</th>

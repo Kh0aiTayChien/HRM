@@ -15,8 +15,7 @@ class DepartmentController < ApplicationController
     @dpm = Department.new(dpm_params)
     respond_to do |format|
       if @dpm.save
-        format.html { redirect_to :action => 'list', notice: "User was successfully created." }
-        # redirect_to :action => 'list'
+        format.html { redirect_to dpms_list_url, notice: "Thêm phòng ban thành công." }
       else
         render :action => 'new'
       end
@@ -37,16 +36,20 @@ class DepartmentController < ApplicationController
 
   def update
     @dpm = Department.find(params[:id])
-    if @dpm.update(dpm_param)
-      redirect_to :action => 'list'
-    else
-      render :action => 'edit'
+    respond_to do |format|
+      if @dpm.update(dpm_param)
+        format.html { redirect_to dpms_list_url, notice: "Cập nhật phòng ban thành công." }
+      else
+        render :action => 'edit'
+      end
     end
   end
 
   def delete
-    Department.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    respond_to do |format|
+      Department.find(params[:id]).destroy
+      format.html { redirect_to dpms_list_url, notice: "Xoá phòng ban thành công." }
+    end
   end
 
 end
