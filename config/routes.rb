@@ -13,4 +13,13 @@ Rails.application.routes.draw do
   get 'dpms/update' => 'department#update'
   get 'dpms/edit' => 'department#edit'
   get 'dpms/delete' => 'department#delete'
+
+  get 'prj/list' => 'project#list'
+  get 'prj/new' => 'project#new'
+  post 'prj/create' => 'project#create'
+  get 'prj/show' => 'project#show'
+  patch 'prj/update' => 'project#update'
+  get 'prj/update' => 'project#update'
+  get 'prj/edit' => 'project#edit'
+  get 'prj/delete' => 'project#delete'
 end
